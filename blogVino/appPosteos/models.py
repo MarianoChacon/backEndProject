@@ -1,11 +1,11 @@
 from django.db import models
-
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 class Posteo(models.Model):
     titulo=models.CharField(max_length=80, unique=True)
     subtitulo=models.CharField(max_length=80)
-    cuerpo=models.TextField()
+    cuerpo=RichTextField()
     autor=models.CharField(max_length=30)
     fecha=models.DateTimeField(auto_now_add=True)
     resumen=models.TextField()
