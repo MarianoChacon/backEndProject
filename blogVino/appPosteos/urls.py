@@ -1,8 +1,10 @@
 
 from django.urls import path
-from .views import *
+from appPosteos.views import *
 
 urlpatterns = [
-    path('', inicio, name='inicio'),
+
+    path('', PosteoList.as_view(), name='List'),
+    
 
 ]

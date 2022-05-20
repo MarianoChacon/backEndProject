@@ -57,7 +57,7 @@ ROOT_URLCONF = 'blogVino.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['F:/Marian/Documents/Python/Curso_Coderhouse/27620-python/Practica_VSC/proyectoFinal/blogVino/blogVino/Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

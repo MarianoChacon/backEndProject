@@ -1,0 +1,14 @@
+{% extends "appPosteos/padre.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+{%for posteo in object_list}
+
+<li> posteo de {{poteo.autor}} </li>
+
+{% endfor %}
+
+{% endblock %}
