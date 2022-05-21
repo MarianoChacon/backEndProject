@@ -1,0 +1,17 @@
+{% extends "appPosteos/padre.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+<form method="post">{% csrf_token %}
+
+    ¿Estás seguro que deseas borrar el post "{{object}}" ?
+    <input type="submit" value="SI">
+
+</form>
+
+
+
+{% endblock %}

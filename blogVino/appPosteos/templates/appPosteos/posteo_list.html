@@ -1,0 +1,32 @@
+{% extends "appPosteos/padre.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+{% for posteo in object_list %}
+
+<li> Posteo de: {{posteo}} 
+
+<button>
+    <a class="btn btn-primary" href="{% url 'posteo_detalle' posteo.id %}">DETALLE</a>
+</button>
+<button>   
+    <a class="btn btn-primary" href="{% url 'posteoEditar' posteo.id %}">EDITAR</a>
+</button>
+<button>
+    <a class="btn btn-primary" href="{% url 'posteoEliminar' posteo.id %}">ELIMINAR</a>
+</button>
+
+</li>
+
+{% endfor %}
+<p>
+<br><br><a class="btn btn-primary" href="{% url 'posteoCrear' %}">Crear</a>
+
+</p>
+
+
+
+{% endblock %}

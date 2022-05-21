@@ -1,0 +1,15 @@
+{% extends "appPosteos/padre.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+<form method="post">{% csrf_token %}
+
+    {{form.as_p}}
+
+    <input type="submit" value="ENVIAR">
+</form>
+
+{% endblock %}
