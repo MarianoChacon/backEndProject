@@ -2,28 +2,33 @@
 
 {% load static %}
 
-
-{% block contenido %}
+{% block titulosposteos %}
 
 {% for posteo in object_list %}
 
-<li> Posteo de: {{posteo}} 
+<div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url(appPosteos/static/img/travel-home-4.jpg)">
+    <div class="destination-inner w-100 text-center text-white index-forward has-transition">
+      <p class="small text-uppercase mb-0">{{posteo.subtitulo}}</p>
+      <h2 class="h3 mb-4">{{posteo.titulo}}</h2>
+      <p class="small text-uppercase mb-0">Autor: {{posteo.autor}}</p>
+      <div class="btn btn-primary w-100 destination-btn text-white">Leer</div>
+    </div></a><a class="btn btn-primary  w-100 destination-btn text-black" href="{% url 'posteo_detalle' posteo.id %}">Detalle</a>
+    <a class="btn btn-primary w-100 destination-btn text-black" href="{% url 'posteoEditar' posteo.id %}">Editar</a>
+</div>
+</div>
 
-<button>
-    <a class="btn btn-primary" href="{% url 'posteo_detalle' posteo.id %}">DETALLE</a>
-</button>
-<button>   
-    <a class="btn btn-primary" href="{% url 'posteoEditar' posteo.id %}">EDITAR</a>
-</button>
-<button>
-    <a class="btn btn-primary" href="{% url 'posteoEliminar' posteo.id %}">ELIMINAR</a>
-</button>
 
-</li>
 
+    
 {% endfor %}
+
+{% endblock %}    
+
+{% block contenido %}
+
+
 <p>
-<br><br><a class="btn btn-primary" href="{% url 'posteoCrear' %}">Crear</a>
+<br><br><a class="btn btn-primary text-uppercase w-100 text-center text-black"  href="{% url 'posteoCrear' %}">Crear nuevo post</a>
 
 </p>
 
