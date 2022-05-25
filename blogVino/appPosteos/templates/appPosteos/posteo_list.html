@@ -6,7 +6,9 @@
 
 {% for posteo in object_list %}
 
-<div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url(appPosteos/static/img/travel-home-4.jpg)">
+
+
+<br><div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url({{imagenesurl}})">
     <div class="destination-inner w-100 text-center text-white index-forward has-transition">
       <p class="small text-uppercase mb-0">{{posteo.subtitulo}}</p>
       <h2 class="h3 mb-4">{{posteo.titulo}}</h2>

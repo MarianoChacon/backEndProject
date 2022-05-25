@@ -25,10 +25,13 @@ class PosteoCrear(CreateView):
 class PosteoList(ListView):
     model = Posteo
     template_name = 'appPosteos/posteo_list.html'
+    imagenposteo=Posteo.objects.all()
+    extra_context={'imagenesurl': imagenposteo[0].imagen.url}
 
 class PosteoDetalle(DetailView):
     model = Posteo
     template_name = 'appPosteos/posteo_detalle.html'
+
 
 #-----------------UPDATE---------------------
 
