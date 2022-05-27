@@ -9,7 +9,8 @@ urlpatterns = [
     path('posteo/nuevo/', PosteoCrear.as_view(), name='posteoCrear'),
     path('posteo/editar/<pk>', PosteoEditar.as_view(), name='posteoEditar'),
     path('posteo/eliminat/<pk>', PosteoEliminar.as_view(), name='posteoEliminar'),
-    
+    path('posteo/ver/<pk>', PosteoVer.as_view(), name='posteo_ver'),
+    path('login', login_request,name='login')
     
 
 ]
