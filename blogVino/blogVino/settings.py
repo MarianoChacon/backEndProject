@@ -135,3 +135,5 @@ CKEDITOR_CONFIGS = {
         'toolbar': None,
     },
 }
+
+LOGIN_URL = '/appPosteos/login'

@@ -67,11 +67,9 @@
 
       {% block login %}
 
-      <form action="" method="POST"> {% csrf_token %}
-
-        {{form.as_p}}
-
-        <button type="submit"> Iniciar Sesión</button>
+      <div class="text-center"><h1> {{mensaje}} </h1> </div>
+    
+   
 
       </form>
 
@@ -101,12 +99,7 @@
         </div>
       </nav>
     </header>
-    <!-- Destinations -->
-    <section class="pt-5">
-      <div class="text-center">
-        <h1>Conocé sobre el Vino</h1>
-        <p class="mb-0"> Disfrutá de los mejores posts</p>
-      </div>
+  
       
         {% block titulosposteos %}
           
