@@ -1,0 +1,20 @@
+{% extends "appPosteos/padre.html" %}
+
+{% load static %}
+
+{% block resBusqueda %}
+
+<p>de la búsqueda: {{autor}}</p> 
+
+{% if posteos %}
+
+{% for posteo in posteos %}
+
+<li>{{posteo.titulo}}</li>
+<li>{{posteo.autor}}</li>
+
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}

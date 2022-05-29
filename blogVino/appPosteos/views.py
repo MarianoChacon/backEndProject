@@ -1,4 +1,5 @@
 from msilib.schema import ListView
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import ListView
 from appPosteos.models import *
@@ -104,3 +105,17 @@ def register(request):
         form=UserCreationForm()
 
     return render(request, "appPosteos/register.html", {'form':form} )
+
+#-----------------Buscar---------------------
+
+def buscarAutor(request):
+    if request.GET['autor']:
+        autor=request.GET['autor']
+        posteos=Posteo.objects.filter(autor__icontains=autor)
+
+        return render(request, "appPosteos/resBusqAutor.html", {'posteos':posteos, 'autor':autor})
+
+    else:
+        respuesta= "No envió datos" 
+
+    return HttpResponse(respuesta)   
