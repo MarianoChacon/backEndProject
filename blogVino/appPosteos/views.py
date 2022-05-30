@@ -106,16 +106,14 @@ def register(request):
 
     return render(request, "appPosteos/register.html", {'form':form} )
 
-#-----------------Buscar---------------------
+#-----------------Buscar--------------------- 
 
 def buscarAutor(request):
-    if request.GET['autor']:
+    if request.GET["autor"]:
         autor=request.GET['autor']
         posteos=Posteo.objects.filter(autor__icontains=autor)
-
-        return render(request, "appPosteos/resBusqAutor.html", {'posteos':posteos, 'autor':autor})
-
+        return render(request, 'appPosteos/resBusqAutor.html', {'posteos':posteos, 'autor':autor})
     else:
-        respuesta= "No envió datos" 
+        respuesta="No ingresó datos"
 
-    return HttpResponse(respuesta)   
+    return render(request, 'appPosteos/resBusqAutor.html', {"respuesta":respuesta})

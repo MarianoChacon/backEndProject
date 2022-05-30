@@ -68,12 +68,7 @@
             <p class="text-sm text-uppercase text-gray mb-0">El mundo del Vino</p></a></div>
       </nav>
 
-      {% block resBusqueda %}
 
-      
-
-
-      {% endblock %}
       <!-- Navbar 2 -->
       <nav class="navbar navbar-expand-lg navbar-light border-gray py-2 bg-light">
         <div class="container">
@@ -94,13 +89,45 @@
         </div>
       </nav>
     </header>
+{% block resBusqueda %}
+{% endblock %}
+
+
+
     <!-- Destinations -->
+
+
+
     <section class="pt-5">
       <div class="text-center">
         <h1>Conocé sobre el Vino</h1>
         <p class="mb-0"> Disfrutá de los mejores posts</p>
       </div>
-      
+<!-- Sección de búsqueda -->
+<section class="py-5">
+  <div class="container py-4">
+    <div class="row align-items-center">
+      <div class="col-lg-6 position-relative py-4"><img class="subscribe-img" src="{% static 'appPosteos/img/uvabuscarblanca.jpg' %}" alt=""><img class="subscribe-img" src="{% static 'appPosteos/img/uvabuscartinta.jpg' %}" alt=""></div>
+      <div class="col-lg-6">
+        <h2>Buscar posteos</h2>
+        <p class="text-muted mb-5">Coloque el nombre del autor o autora para buscar todos los posteos realizados</p>
+        <form action="{% url 'buscarAutor' %}" method="GET"> {% csrf_token %}
+          <div class="row gy-3 gy-lg-0">
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="autor" placeholder="Ingrese el autor" id="autor">
+              
+            </div>
+            <div class="col-lg-4">
+              <button class="btn btn-dark btn-block" type="submit" Value="Buscar">buscar</button>
+            
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
         {% block titulosposteos %}
           
 
@@ -208,30 +235,7 @@
         </div>
       </div>
     </section>
-    <!-- Subscribe section -->
-    <section class="py-5">
-      <div class="container py-4">
-        <div class="row align-items-center">
-          <div class="col-lg-6 position-relative py-4"><img class="subscribe-img" src="{% static 'appPosteos/img/subscribe-img-1.jpg' %}" alt=""><img class="subscribe-img" src="{% static 'appPosteos/img/subscribe-img-2.jpg' %}" alt=""></div>
-          <div class="col-lg-6">
-            <h2>Buscar posteos</h2>
-            <p class="text-muted mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos quidem facere aliquam, delectus, incidunt ipsum fugit deserunt ducimus quibusdam consequuntur quos numquam ipsa suscipit animi dolore. Est beatae inventore voluptas.</p>
-            <form action="appPosteos/buscarAutor/" method="GET">
-              <div class="row gy-3 gy-lg-0">
-                <div class="col-lg-8">
-                  <input class="form-control" type="text" name="autor" placeholder="Ingrese el autor">
-                  <br><input class="form-control" type="email" name="email" placeholder="Enter your email address">
-                </div>
-                <div class="col-lg-4">
-                  <button class="btn btn-dark btn-block" type="submit" Value="Buscar">buscar</button>
-                <br><button class="btn btn-dark btn-block" type="submit">Subscribe</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+    
     <!-- Top categories section -->
     <section class="py-5 bg-light">
       <div class="container py-4">

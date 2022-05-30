@@ -4,17 +4,32 @@
 
 {% block resBusqueda %}
 
-<p>de la búsqueda: {{autor}}</p> 
 
-{% if posteos %}
 
-{% for posteo in posteos %}
+    <div class="container py-4">
+      <div class="row align-items-center">
+            <div class="col-lg-6 position-relative py-1"><img class="subscribe-img" src="{% static 'appPosteos/img/uvabuscarblanca.jpg' %}" alt=""><img class="subscribe-img" src="{% static 'appPosteos/img/uvabuscartinta.jpg' %}" alt=""></div>
+        <div class="col-lg-6">
+            <p class="h4">Resultados de la búsqueda: {{autor}}</p> 
 
-<li>{{posteo.titulo}}</li>
-<li>{{posteo.autor}}</li>
+            {% if not respuesta %}
 
-{% endfor %}
+            {% for posteo in posteos %}
 
-{% endif %}
+            <p class="text-center"><li>Título: {{posteo.titulo}} | Autor: {{posteo.autor}}</li></p>
+            <a class="btn btn-primary destination-btn text-black" href="{% url 'posteo_ver' posteo.id %}" >Leer</a>
 
+            {% empty %}
+            <h3>No se encontraron resultados que coincidan con su búsqueda</h3>
+            {% endfor %}
+
+            {% else %}
+
+            <h2 style="color:red">No se ingresaron datos</h2>
+
+            {% endif %}
+            
+        </div>
+     </div>
+    </div>
 {% endblock %}
