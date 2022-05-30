@@ -10,6 +10,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from appPosteos.forms import *
 
 # Create your views here.
 
@@ -78,9 +79,9 @@ def login_request(request):
                 login(request, user)
                 return render(request, "appPosteos/loginConfirma.html", {'mensaje': f"Bienvenido {usuario}"})
             else:
-                return render(request, "appPosteos/loginConfirma.html", {'mensaje': "Error, formulario erróneo"})
+                return render(request, "appPosteos/login.html", {'form':form, 'mensaje': "Error, formulario erróneo"})
         else:
-                return render(request, "appPosteos/loginConfirma.html", {'mensaje': "Error, datos incorrectos"})
+                return render(request, "appPosteos/login.html", {'form':form, 'mensaje': "Error, datos incorrectos"})
 
     form=AuthenticationForm()
 
@@ -90,7 +91,7 @@ def login_request(request):
 
 def register(request):
     if request.method=='POST':
-        form=UserCreationForm(request.POST)
+        form=UserRegistrationForm(request.POST)
 
         if form.is_valid():
             
@@ -102,7 +103,7 @@ def register(request):
             return render(request, "appPosteos/registerConfirma.html", {'mensaje': "Ocurrió un error, inténtelo nuevamente"})
 
     else:
-        form=UserCreationForm()
+        form=UserRegistrationForm()
 
     return render(request, "appPosteos/register.html", {'form':form} )
 
@@ -117,3 +118,27 @@ def buscarAutor(request):
         respuesta="No ingresó datos"
 
     return render(request, 'appPosteos/resBusqAutor.html', {"respuesta":respuesta})
+
+#-----------------Editar perfil---------------------
+
+@login_required
+def editarPerfil(request):
+    usuario=request.user
+
+    if request.method=='POST':
+        miFormulario=UserEditForm(request.POST, instance=usuario)
+        if miFormulario.is_valid():
+
+            informacion= miFormulario.cleaned_data
+
+            usuario.email=informacion['email']
+            usuario.password1=informacion['password1']
+            usuario.password2=informacion['password2']
+            usuario.first_name=informacion['first_name']
+            usuario.last_name=informacion['last_name']
+            usuario.save()
+
+            return render(request, "appPosteos/editarPerfilConfrima.html", {'usuario':usuario, 'mensaje1':"Perfil editado correctamente"})
+    else:
+        miFormulario=UserEditForm(instance=usuario)
+    return render(request, 'appPosteos/editarPerfil.html', {'formulario':miFormulario, 'usuario':usuario.username})
