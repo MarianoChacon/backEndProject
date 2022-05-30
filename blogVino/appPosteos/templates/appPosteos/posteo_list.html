@@ -15,10 +15,12 @@
       <p class="small text-uppercase mb-0">Autor: {{posteo.autor}}</p>
       <div class="btn btn-primary w-100 destination-btn text-white">Leer</div>
     </div></a>
+    
     <a class="btn btn-primary  w-100 destination-btn text-black" href="{% url 'posteo_detalle' posteo.id %}">Detalle</a>
     <a class="btn btn-primary w-100 destination-btn text-black" href="{% url 'posteoEditar' posteo.id %}">Editar</a>
     <a class="btn btn-primary w-100 destination-btn text-black" href="{% url 'posteoEliminar' posteo.id %}">Eliminar</a>
-</div>
+    
+  </div>
 </div>
 
 
