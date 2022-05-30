@@ -51,11 +51,16 @@
             </div>
             <div class="col-lg-4 d-none d-lg-block text-end">
               <div class="dropdown text-sm">
-                <li class="list-inline-item"><a class="reset-anchor"  href="{% url 'login' %}">Acceder</a></li>
-                <li class="list-inline-item"><a class="reset-anchor"  href="{% url 'register' %}">Registrarse</a></li>
-                <li class="list-inline-item"><a class="reset-anchor"  href="{% url 'editarPerfil' %}">Modificar datos</a></li>
-                <li class="list-inline-item"><a class="reset-anchor"  href="{% url 'logout' %}">Salir</a></li>
-                {{mensaje}}
+                
+                {% if not request.user.is_authenticated %}
+                <li class="list-inline-item"><a class="reset-anchor"  href="{% url 'login' %}">Acceder |</a></li>
+                <li class="list-inline-item"><a class="reset-anchor"  href="{% url 'register' %}">Registrarse </a></li>
+                {% else %}
+                <p>Hola {{user}}</p>
+                <li class="list-inline-item"><a class="reset-anchor"  href="{% url 'editarPerfil' %}">Modificar datos |</a></li>
+                <li class="list-inline-item"><a class="reset-anchor"  href="{% url 'logout' %}">Salir </a></li>
+                {% endif %}
+                
               </div>
             </div>
           </div>
