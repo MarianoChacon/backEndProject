@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Posteo(models.Model):
     titulo=models.CharField(max_length=80, unique=True)
     subtitulo=models.CharField(max_length=80)
-    user=models.ForeignKey(User,on_delete=models.CASCADE, default=1)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
     cuerpo=RichTextField()
     autor=models.CharField(max_length=30)
     fecha=models.DateTimeField(auto_now_add=True)

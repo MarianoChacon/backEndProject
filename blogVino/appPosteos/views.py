@@ -23,7 +23,7 @@ def prueba(request):
 class PosteoCrear(LoginRequiredMixin,CreateView):
     model = Posteo
     success_url = reverse_lazy('list')
-    fields=['titulo', 'subtitulo', 'cuerpo','autor','resumen','imagen']
+    fields=['titulo', 'subtitulo', 'cuerpo','autor','resumen','imagen','user']
 
 #------------------READ--------------
 

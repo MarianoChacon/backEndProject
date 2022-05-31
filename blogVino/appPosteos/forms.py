@@ -9,7 +9,7 @@ class UserRegistrationForm(UserCreationForm):
     password2= forms.CharField(label='Repita su contraseña', widget=forms.PasswordInput)
     first_name=forms.CharField(label='Ingrese su nombre')
     last_name=forms.CharField(label='Ingrese su apellido')
-
+    
     class Meta:
         model= User
         fields= ['username','email','password1','password2','first_name','last_name']
