@@ -1,0 +1,22 @@
+{% extends "appMensajes/padre.html" %}
+
+{% load static %}
+
+{% block mensajesInicio %}
+
+<h1 class="text-center"> Mensajes</h1>
+
+<form action="{% url 'mensajesList' %}" method="post">{% csrf_token %}
+
+    {{form.as_p}}
+<input type="submit" value="ENVIAR">
+
+</form>
+
+
+
+
+
+
+
+{% endblock %}
