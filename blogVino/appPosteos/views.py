@@ -30,8 +30,7 @@ class PosteoCrear(LoginRequiredMixin,CreateView):
 class PosteoList(ListView):
     model = Posteo
     template_name = 'appPosteos/posteo_list.html'
-    imagenposteo=Posteo.objects.all()
-    extra_context={'imagenesurl': imagenposteo[0].imagen.url}
+    
 
 class PosteoDetalle(LoginRequiredMixin, DetailView):
     model = Posteo

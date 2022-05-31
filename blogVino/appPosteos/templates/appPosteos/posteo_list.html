@@ -17,9 +17,12 @@
     </div></a>
     
     <a class="btn btn-primary  w-100 destination-btn text-black" href="{% url 'posteo_detalle' posteo.id %}">Detalle</a>
+    
+    {% if posteo.user == request.user %} 
     <a class="btn btn-primary w-100 destination-btn text-black" href="{% url 'posteoEditar' posteo.id %}">Editar</a>
     <a class="btn btn-primary w-100 destination-btn text-black" href="{% url 'posteoEliminar' posteo.id %}">Eliminar</a>
-    
+       
+    {% endif %}
   </div>
 </div>
 

@@ -3,7 +3,8 @@ from django import forms
 from django.contrib.auth.models import User
 
 class UserRegistrationForm(UserCreationForm):
-    email=email=forms.EmailField(label="Ingrese e-mail")
+    username=forms.CharField(label='Ingrese su nombre de usuario')
+    email=forms.EmailField(label="Ingrese e-mail")
     password1= forms.CharField(label='Ingrese su contraseña', widget=forms.PasswordInput)
     password2= forms.CharField(label='Repita su contraseña', widget=forms.PasswordInput)
     first_name=forms.CharField(label='Ingrese su nombre')
@@ -11,11 +12,12 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model= User
-        fields= ['email','password1','password2','first_name','last_name']
+        fields= ['username','email','password1','password2','first_name','last_name']
         help_texts = {k:"" for k in fields}
 
 
 class UserEditForm(UserCreationForm):
+    username=forms.CharField(label='Ingrese su nombre de usuario')
     email=forms.EmailField(label="Ingrese nuevo e-mail")
     password1= forms.CharField(label='Ingrese nueva contraseña', widget=forms.PasswordInput)
     password2= forms.CharField(label='Repita su nueva contraseña', widget=forms.PasswordInput)
@@ -24,7 +26,7 @@ class UserEditForm(UserCreationForm):
 
     class Meta:
         model= User
-        fields=['email','password1','password2','first_name','last_name']
+        fields=['username','email','password1','password2','first_name','last_name']
         help_texts = {k:"" for k in fields}
 
 
