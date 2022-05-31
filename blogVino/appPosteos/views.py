@@ -15,8 +15,7 @@ from appPosteos.forms import *
 # Create your views here.
 
 
-def prueba(request):
-    return render(request, 'AppPosteos/prueba.html')
+
 
 #------------------CREATE--------------
 
