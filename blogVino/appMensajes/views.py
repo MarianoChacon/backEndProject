@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
 from .models import Mensaje
 from .forms import FormMensaje
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 
 # Create your views here.
 
@@ -45,6 +45,11 @@ class MensajeCrear(LoginRequiredMixin,CreateView):
 
 #------------------READ--------------
 
-class MensajeList(ListView):
+class MensajeList(LoginRequiredMixin, ListView):
     model = Mensaje
     template_name = 'appMensajes/mensaje_list.html'
+
+
+class MensajeVer(LoginRequiredMixin, DetailView):
+    model = Mensaje
+    template_name = 'appMensajes/mensaje_ver.html'

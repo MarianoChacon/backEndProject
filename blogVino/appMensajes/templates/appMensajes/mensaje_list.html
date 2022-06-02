@@ -5,15 +5,31 @@
 {% block mensajesInicio %}
 
 
-{% for mensaje in object_list %}
+   
+                {% for mensaje in object_list %}
 
-<h3>Mensaje de {{mensaje.emisor}}</h3>
-<p>{{mensaje.mensaje}} </p>
+                {% if mensaje.receptor == request.user %}
+                
+                    <ul class="list-inline mb-0 small">
+                        <li class="list-inline-item" style="font-size:medium"><br> De <b>{{mensaje.emisor}}</b> {{mensaje.fecha}}</li>
+                         
+                           <p style="font-size:large" class="h-100 bg-light d-flex align-items-center"><br> <b> {{mensaje.mensaje}} </b></p>
+                            
+                    
+                    </ul>
+                  
+
+    {% endif %}
+
+    
+
+    
 
 {% endfor %}
 
-
-
-
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 {% endblock %}
+
+
+
+
