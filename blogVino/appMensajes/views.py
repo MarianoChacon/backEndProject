@@ -35,6 +35,8 @@ class MensajeCrear(LoginRequiredMixin,CreateView):
 class MensajeList(LoginRequiredMixin, ListView):
     model = Mensaje
     template_name = 'appMensajes/mensaje_list.html'
+    mens=Mensaje.objects.all()
+    extra_context={'mens': mens}
 
     
 

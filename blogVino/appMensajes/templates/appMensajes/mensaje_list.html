@@ -7,44 +7,57 @@
 
    
                
-                      <h3 class="h4 mb-4 d-flex align-items-center"><span>Conversaciones</span></h3>
+                      
+                      <h3 class="h4 mb-4 d-flex align-items-center"><span>Mensajes recibidos</span></h3>
                       <ul class="list-unstyled comments">
-                        {% for mensaje in object_list %}
-
-                        {% if mensaje.receptor == request.user %}
-                        <div class="col-lg-3">
-                          <div class="d-flex mb-4">
-                            <div class="pe-2 flex-grow-1" style="width: 75px; min-width: 75px;"><img class="rounded-circle shadow-sm img-fluid img-thumbnail" src="img/person-1.jpg" alt=""/></div>
-                            <div class="ps-2">
-                              <p class="small mb-0 text-primary">{{mensaje.fecha}}</p>
-                              <p class="text-muted text-sm mb-2">{{mensaje.emisor}}:</p>
-                              <h5>{{mensaje.mensaje}}</h5><a class="reset-anchor text-sm" href="{% url 'respForm' %}"><i class="fas fa-share me-2 text-primary"></i><strong>Responder</strong></a>
-                            </div>
-                          </div>
-                          {% endif %}
-                          {% endfor %}
-                     
-                        </div>
-
-                        {% for mensaje in object_list %}
-                        {% if mensaje.emisor == request.user %}
-                        <div class="col-lg-8">
-                          <div class="d-flex mb-4">
-                            <div class="pe-2 flex-grow-1" style="width: 75px; min-width: 75px;"><img class="rounded-circle shadow-sm img-fluid img-thumbnail" src="img/person-1.jpg" alt=""/></div>
-                            <div class="ps-2">
-                              <p class="small mb-0 text-primary">{{mensaje.fecha}}</p>
-                              <p class="text-muted text-sm mb-2">{{mensaje.emisor}}:</p>
-                              <h5>{{mensaje.mensaje}}</h5>
-                            </div>
-                          </div>
-                        
+                          
+                          {% for mensaje in object_list %}
+                          
+                            {% if mensaje.receptor == request.user %}
+                            <div class="col-lg-3">
+                              <div class="d-flex mb-4">
+                                <div class="pe-2 flex-grow-1" style="width: 75px; min-width: 75px;"><img class="rounded-circle shadow-sm img-fluid img-thumbnail" src="img/person-1.jpg" alt=""/></div>
+                                <div class="ps-2">
+                                  <p class="small mb-0 text-primary">{{mensaje.fecha}}</p>
+                                  <p class="text-muted text-sm mb-2">{{mensaje.emisor}}:</p>
+                                  <h5>{{mensaje.mensaje}}</h5><a class="reset-anchor text-sm" href="{% url 'respForm' %}"><i class="fas fa-share me-2 text-primary"></i><strong>Responder</strong></a>
+                                </div>
+                              </div>
+                            </div> 
+                          </ul>
+                            {% endif %}
+                          
+                          {% endfor %} 
+                          <h3 class="h4 mb-4 d-flex align-items-center"><span>Mensajes enviados</span></h3>
+                          {% for mensaje in object_list %}
+                            {% if mensaje.emisor == request.user %}
+                              <div class="col-lg-6">
+                                <div class="d-flex mb-4">
+                                  <div class="pe-2 flex-grow-1" style="width: 75px; min-width: 75px;"><img class="rounded-circle shadow-sm img-fluid img-thumbnail" src="img/person-1.jpg" alt=""/></div>
+                                  <div class="ps-2">
+                                    <p class="small mb-0 text-primary">{{mensaje.fecha}}</p>
+                                    <p class="text-muted text-sm mb-2">{{mensaje.emisor}}:</p>
+                                    <h5>{{mensaje.mensaje}}</h5>
+                                    <p class="text-muted text-sm mb-2">Enviado a {{mensaje.receptor}}</p>
+                                  </div>
+                                </div>
+                              
+                           
+                              </div>
+                            </ul>
+                            {% endif %}                  
                      
                         </div>
                       </ul>
-                        {% endif %}
-    
-                        {% endfor %}
-    
+                        
+
+                      
+                          {% endfor %}
+                     
+                        
+                      <p>--------------------------------------</p>
+
+              
 
     
 
