@@ -23,8 +23,11 @@
           <li class="list-inline-item text-muted align-middle me-0">{{posteo.fecha}}</li>
           <li class="list-inline-item text-muted align-middle me-0">|</li>
         </ul>
+        {% if not posteo.imagen %}
+      </div><img class="w-100 py-5" src="/static/appPosteos/img/pileta.jpg" alt="">
+        {% else %}
       </div><img class="w-100 py-5" src="{{posteo.imagen.url}}" alt="">
-      
+        {% endif %}
       <div class="container">
         <div class="row gy-5">
           <div class="col-lg-8">
