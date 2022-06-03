@@ -35,9 +35,9 @@ class MensajeCrear(LoginRequiredMixin,CreateView):
 class MensajeList(LoginRequiredMixin, ListView):
     model = Mensaje
     template_name = 'appMensajes/mensaje_list.html'
-    mens=Mensaje.objects.all()
-    extra_context={'mens': mens}
-
+    listaUsuarios=User.objects.all()
+    extra_context={'listaUsuarios': listaUsuarios}
+    
     
 
 class MensajeVer(LoginRequiredMixin, DetailView):
@@ -65,3 +65,4 @@ def respForm(request):
         
 
         return render (request,'appMensajes/mensaje_responder.html', {'form':form})
+

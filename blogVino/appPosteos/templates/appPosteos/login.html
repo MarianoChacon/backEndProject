@@ -24,7 +24,7 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{% static 'appPosteos/css/custom.css' %}">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="{% static 'appPosteos/img/favicon.png' %}">
+    <link rel="shortcut icon" href="{% static 'appPosteos/img/copas-vino.png' %}">
   </head>
   <body>
     <!-- Header-->
@@ -37,22 +37,27 @@
               <ul class="list-inline mb-0 text-sm">
                 <li class="list-inline-item"><a class="reset-anchor" href="#!">About us</a></li>
                 <li class="list-inline-item">|</li>
-                <li class="list-inline-item"><a class="reset-anchor" href="#!">Sitemap</a></li>
+                
               </ul>
             </div>
             <div class="col-lg-4 d-none d-lg-block text-center">
               <ul class="list-inline mb-0 small">
-                <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-facebook-f"></i>AA</a></li>
-                <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-twitter"></i></a></li>
-                <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-instagram"></i></a></li>
-                <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-youtube"></i></a></li>
-                <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-vimeo-v"></i></a></li>
+                
               </ul>
             </div>
             <div class="col-lg-4 d-none d-lg-block text-end">
-              
-              
-              
+              <div class="dropdown text-sm">
+                
+                {% if not request.user.is_authenticated %}
+                <li class="list-inline-item"><a class="reset-anchor"  href="{% url 'login' %}">Acceder |</a></li>
+                <li class="list-inline-item"><a class="reset-anchor"  href="{% url 'register' %}">Registrarse </a></li>
+                {% else %}
+                <p>Hola {{user}}</p>
+                <li class="list-inline-item"><a class="reset-anchor"  href="{% url 'editarPerfil' %}">Modificar datos |</a></li>
+                <li class="list-inline-item"><a class="reset-anchor"  href="{% url 'logout' %}">Salir </a></li>
+                {% endif %}
+                
+              </div>
             </div>
           </div>
         </div>
@@ -147,11 +152,7 @@
           </div>
           <div class="col-lg-4 text-center">
             <ul class="list-inline text-white small mb-0">
-              <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-facebook-f"></i></a></li>
-              <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-twitter"></i></a></li>
-              <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-instagram"></i></a></li>
-              <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-youtube"></i></a></li>
-              <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-vimeo-v"></i></a></li>
+              
             </ul>
           </div>
           <div class="col-lg-4 text-center text-lg-end">

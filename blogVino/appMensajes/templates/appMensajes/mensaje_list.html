@@ -10,10 +10,14 @@
                       
                       <h3 class="h4 mb-4 d-flex align-items-center"><span>Mensajes recibidos</span></h3>
                       <ul class="list-unstyled comments">
-                          
+                        {% for usuario in listaUsuarios %}
+                          <p>{{usuario.username}}</p> 
+                        
                           {% for mensaje in object_list %}
-                          
-                            {% if mensaje.receptor == request.user %}
+                           
+                        
+                            
+                            {% if mensaje.receptor == request.user and mensaje.emisor == usuario %}
                             <div class="col-lg-3">
                               <div class="d-flex mb-4">
                                 <div class="pe-2 flex-grow-1" style="width: 75px; min-width: 75px;"><img class="rounded-circle shadow-sm img-fluid img-thumbnail" src="img/person-1.jpg" alt=""/></div>
@@ -25,12 +29,13 @@
                               </div>
                             </div> 
                           </ul>
+                          
                             {% endif %}
                           
-                          {% endfor %} 
-                          <h3 class="h4 mb-4 d-flex align-items-center"><span>Mensajes enviados</span></h3>
-                          {% for mensaje in object_list %}
-                            {% if mensaje.emisor == request.user %}
+                           
+                          
+                          
+                            {% if mensaje.emisor == request.user and mensaje.receptor == usuario %}
                               <div class="col-lg-6">
                                 <div class="d-flex mb-4">
                                   <div class="pe-2 flex-grow-1" style="width: 75px; min-width: 75px;"><img class="rounded-circle shadow-sm img-fluid img-thumbnail" src="img/person-1.jpg" alt=""/></div>
@@ -46,13 +51,13 @@
                               </div>
                             </ul>
                             {% endif %}                  
-                     
+                          {% endfor %}
                         </div>
                       </ul>
                         
 
                       
-                          {% endfor %}
+                        {% endfor %}
                      
                         
                       <p>--------------------------------------</p>

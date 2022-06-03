@@ -16,5 +16,6 @@ urlpatterns = [
     path('logout', LogoutView.as_view(template_name='appPosteos/logout.html'), name='logout'),
     path('buscarAutor/', buscarAutor, name='buscarAutor'),
     path('editarPerfil/', editarPerfil, name='editarPerfil'),
+     path('aboutUs/', aboutUs, name='aboutUs'),
 
 ]

@@ -16,7 +16,8 @@ from appPosteos.forms import *
 
 
 
-
+def aboutUs(request):
+    return render(request, 'appPosteos/aboutUs.html')
 #------------------CREATE--------------
 
 class PosteoCrear(LoginRequiredMixin,CreateView):
@@ -75,7 +76,7 @@ def login_request(request):
 
             if user is not None:
                 login(request, user)
-                return render(request, "appPosteos/loginConfirma.html", {'mensaje': f"Bienvenido {usuario}"})
+                return render(request, "appPosteos/loginConfirma.html", {'mensaje': f"Bienvenidx {usuario}"})
             else:
                 return render(request, "appPosteos/login.html", {'form':form, 'mensaje': "Error, formulario erróneo"})
         else:
