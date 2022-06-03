@@ -1,3 +1,4 @@
+from xmlrpc.client import DateTime
 from django import forms
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
@@ -10,6 +11,7 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+import datetime
 
 # Create your views here.
 
@@ -66,3 +68,16 @@ def respForm(request):
 
         return render (request,'appMensajes/mensaje_responder.html', {'form':form})
 
+
+
+#@login_required
+#def nuevoMens(request):
+    
+      
+ #   ultimaFecha=Mensaje.objects.all().order_by('-fecha')[0]
+  #  diferencia = datetime.datetime.now()-ultimaFecha
+   # if 
+    #contexto={"ultimafecha":ultimaFecha}
+    
+    #return render(request, 'appMensajes/prueba.html', contexto )
+        

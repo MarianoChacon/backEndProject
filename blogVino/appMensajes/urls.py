@@ -9,4 +9,6 @@ urlpatterns = [
     path('mensaje/ver/<pk>', MensajeVer.as_view(), name='mensaje_ver'),
     path('mensaje/resp/', respForm, name='respForm'),
 
+    #mensaje/prueba/', nuevoMens, name='prueba'),
+
 ]
