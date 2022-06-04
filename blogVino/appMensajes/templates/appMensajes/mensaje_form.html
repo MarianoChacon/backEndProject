@@ -8,13 +8,13 @@
 
 
 
-<h3 class="text-center"><a class="btn btn-primary" href="{% url 'mensajeList' %}">Ver mis mensajes</a></h3>
+<h3 class="text-center"><a class="btn btn-primary" style="border-radius: 10px;" href="{% url 'mensajeList' %}">Ver mis mensajes</a></h3>
 
 <form method="post">{% csrf_token %}
 
     {{form.as_p}}
     
-<input type="submit" value="ENVIAR">
+<input class="btn btn-primary btn-block" style="border-radius: 10px" type="submit" value="ENVIAR">
 
 </form>
 {% endblock %}

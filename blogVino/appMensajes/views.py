@@ -85,7 +85,20 @@ def listaMensajes(request):
     
     mens=Mensaje.objects.all()
 
-    return render(request, 'appMensajes/mensaje_list.html', {'mens':mens, 'listaUsuarios':listaUsuarios})
+    if request.method =='POST':
+        form=FormResp(request.POST)
+        if form.is_valid():
+            informacion=form.cleaned_data
+
+            mensaje=Mensaje(emisor=User.objects.get(username=request.user), receptor=informacion['receptor'], mensaje=informacion['mensaje'])
+            mensaje.save()
+
+            
+
+    else:
+        form=FormResp()
+
+    return render(request, 'appMensajes/mensaje_list.html', {'mens':mens, 'listaUsuarios':listaUsuarios,'form':form})
 
 
     

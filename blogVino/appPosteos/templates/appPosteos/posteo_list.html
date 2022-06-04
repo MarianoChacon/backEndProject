@@ -17,7 +17,7 @@
       <p class="small text-uppercase mb-0">Autor: {{posteo.autor}}</p>
       <div class="btn btn-primary w-100 destination-btn text-white">Leer</div>
     </div></a>
-    <a class="btn btn-primary  w-100 destination-btn text-black" href="{% url 'posteo_detalle' posteo.id %}">Detalle</a>
+    <a class="btn btn-primary  w-100 destination-btn text-black" style="border-radius: 10px; border-color: black;" href="{% url 'posteo_detalle' posteo.id %}">Detalle</a>
     {% else %}
     <a class="destination d-flex align-items-end bg-center bg-cover" href="{% url 'posteo_ver' posteo.id %}" style="background: url({{posteo.imagen.url}})">
     <div class="destination-inner w-100 text-center text-white index-forward has-transition">
@@ -27,12 +27,12 @@
       <div class="btn btn-primary w-100 destination-btn text-white">Leer</div>
     </div></a>
     
-    <a class="btn btn-primary  w-100 destination-btn text-black" href="{% url 'posteo_detalle' posteo.id %}">Detalle</a>
+    <a class="btn btn-primary  w-100 destination-btn text-black" style="border-radius: 10px; border-color: black;" href="{% url 'posteo_detalle' posteo.id %}">Detalle</a>
     {% endif %}
 
     {% if posteo.user == request.user %} 
-    <a class="btn btn-primary w-100 destination-btn text-black" href="{% url 'posteoEditar' posteo.id %}">Editar</a>
-    <a class="btn btn-primary w-100 destination-btn text-black" href="{% url 'posteoEliminar' posteo.id %}">Eliminar</a>
+    <a class="btn btn-primary w-100 destination-btn text-black" style="border-radius: 10px; border-color: black;" href="{% url 'posteoEditar' posteo.id %}">Editar</a>
+    <a class="btn btn-primary w-100 destination-btn text-black" style="border-radius: 10px; border-color: black;" href="{% url 'posteoEliminar' posteo.id %}">Eliminar</a>
        
     {% endif %}
   </div>
@@ -49,7 +49,7 @@
 
 
 <p>
-<br><br><a class="btn btn-primary text-uppercase w-100 text-center text-black"  href="{% url 'posteoCrear' %}">Crear nuevo post</a>
+<br><br><a class="btn btn-primary text-uppercase w-100 text-center text-black" style="border-radius: 10px; border-color: black;"  href="{% url 'posteoCrear' %}">Crear nuevo post</a>
 
 </p>
 
