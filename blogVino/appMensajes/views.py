@@ -1,3 +1,4 @@
+import re
 from xmlrpc.client import DateTime
 from django import forms
 from django.shortcuts import render
@@ -15,7 +16,7 @@ import datetime
 
 # Create your views here.
 
-
+@login_required
 def inicioMensajes(request):
     return render(request, 'appMensajes/inicio.html')
 
@@ -34,17 +35,17 @@ class MensajeCrear(LoginRequiredMixin,CreateView):
         
 #------------------READ--------------
 
-class MensajeList(LoginRequiredMixin, ListView):
-    model = Mensaje
-    template_name = 'appMensajes/mensaje_list.html'
-    listaUsuarios=User.objects.all()
-    extra_context={'listaUsuarios': listaUsuarios}
+#class MensajeList(LoginRequiredMixin, ListView):
+ #   model = Mensaje
+  #  template_name = 'appMensajes/mensaje_list.html'
+   # listaUsuarios=User.objects.all()
+    #extra_context={'listaUsuarios': listaUsuarios}
     
     
 
-class MensajeVer(LoginRequiredMixin, DetailView):
-    model = Mensaje
-    template_name = 'appMensajes/mensaje_ver.html'
+#class MensajeVer(LoginRequiredMixin, DetailView):
+  #  model = Mensaje
+   # template_name = 'appMensajes/mensaje_ver.html'
 
 
 #---------------------Form para responder mensaje------------
@@ -67,6 +68,27 @@ def respForm(request):
         
 
         return render (request,'appMensajes/mensaje_responder.html', {'form':form})
+
+
+
+@login_required
+def listaMensajes(request):
+    listaUsuarios=User.objects.all()
+    mensajes=Mensaje.objects.all()
+
+    for mensaje in mensajes:
+        if (mensaje.receptor == request.user):
+        
+            mensaje.leido= True
+            mensaje.save()
+
+    
+    mens=Mensaje.objects.all()
+
+    return render(request, 'appMensajes/mensaje_list.html', {'mens':mens, 'listaUsuarios':listaUsuarios})
+
+
+    
 
 
 

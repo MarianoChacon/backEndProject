@@ -10,14 +10,10 @@
                       
                       <h3 class="h4 mb-4 d-flex align-items-center"><span>Mensajes recibidos</span></h3>
                       <ul class="list-unstyled comments">
-                        
                         {% for usuario in listaUsuarios %}
+                          <p>{{usuario.username}}</p> 
                         
-                        {% if usuario != request.user %}
-                        <div style="height:85px; overflow-y:scroll"></div>
-                          <p>Conversación con: {{usuario.username}}</p> 
-                        
-                          {% for mensaje in mens %}
+                          {% for mensaje in object_list %}
                            
                         
                             
@@ -47,23 +43,20 @@
                                     <p class="small mb-0 text-primary">{{mensaje.fecha}}</p>
                                     <p class="text-muted text-sm mb-2">{{mensaje.emisor}}:</p>
                                     <h5>{{mensaje.mensaje}}</h5>
-                                    <p class="text-muted text-sm mb-2">Enviado a {{mensaje.receptor}} |
-                                        {% if mensaje.leido == True %}
-                                        <b>Visto</b>
-                                        {% endif %}
-                                    </p>
+                                    <p class="text-muted text-sm mb-2">Enviado a {{mensaje.receptor}}</p>
                                   </div>
                                 </div>
+                              
+                           
                               </div>
                             </ul>
                             {% endif %}                  
                           {% endfor %}
-                        
+                        </div>
                       </ul>
                         
 
-                        {% endif %}
-                      </div>
+                      
                         {% endfor %}
                      
                         
