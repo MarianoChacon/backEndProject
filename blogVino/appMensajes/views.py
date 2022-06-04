@@ -33,19 +33,6 @@ class MensajeCrear(LoginRequiredMixin,CreateView):
         form.instance.emisor = self.request.user
         return super().form_valid(form)
         
-#------------------READ--------------
-
-#class MensajeList(LoginRequiredMixin, ListView):
- #   model = Mensaje
-  #  template_name = 'appMensajes/mensaje_list.html'
-   # listaUsuarios=User.objects.all()
-    #extra_context={'listaUsuarios': listaUsuarios}
-    
-    
-
-#class MensajeVer(LoginRequiredMixin, DetailView):
-  #  model = Mensaje
-   # template_name = 'appMensajes/mensaje_ver.html'
 
 
 #---------------------Form para responder mensaje------------
@@ -69,7 +56,7 @@ def respForm(request):
 
         return render (request,'appMensajes/mensaje_responder.html', {'form':form})
 
-
+#------------------READ de mensajes + formulario de respuesta--------------
 
 @login_required
 def listaMensajes(request):
@@ -99,20 +86,4 @@ def listaMensajes(request):
         form=FormResp()
 
     return render(request, 'appMensajes/mensaje_list.html', {'mens':mens, 'listaUsuarios':listaUsuarios,'form':form})
-
-
-    
-
-
-
-#@login_required
-#def nuevoMens(request):
-    
-      
- #   ultimaFecha=Mensaje.objects.all().order_by('-fecha')[0]
-  #  diferencia = datetime.datetime.now()-ultimaFecha
-   # if 
-    #contexto={"ultimafecha":ultimaFecha}
-    
-    #return render(request, 'appMensajes/prueba.html', contexto )
-        
+     
