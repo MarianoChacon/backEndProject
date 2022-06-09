@@ -10,5 +10,6 @@ urlpatterns = [
     path('mensaje/resp/', respForm, name='respForm'),
 
     path('mensaje/list/', listaMensajes, name='mensajeList'),
+    path('mensaje/prueba/', nuevoMensRecib, name='prueba'),
 
 ]

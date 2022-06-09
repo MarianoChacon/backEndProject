@@ -13,3 +13,11 @@ class Mensaje(models.Model):
 
     def __str__(self):
         return f"Mesanje de {self.emisor} para {self.receptor} enviado {self.fecha}"
+
+class NuevoMens(models.Model):
+    usuario=models.ForeignKey(User, on_delete=models.CASCADE, related_name='usuario')
+    ultimoMensFecha=models.DateTimeField()
+
+    def __str__(self):
+        return f"Usuario {self.usuario}. Fecha: {self.ultimoMensFecha}"
+    

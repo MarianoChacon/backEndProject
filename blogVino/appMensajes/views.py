@@ -3,7 +3,7 @@ from xmlrpc.client import DateTime
 from django import forms
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Mensaje
+from .models import Mensaje, NuevoMens
 from .forms import FormResp
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
@@ -86,4 +86,24 @@ def listaMensajes(request):
         form=FormResp()
 
     return render(request, 'appMensajes/mensaje_list.html', {'mens':mens, 'listaUsuarios':listaUsuarios,'form':form})
-     
+
+
+@login_required
+def nuevoMensRecib(request):
+    
+    #tiempoDesdeUltimoMensActual=datetime.datetime.now()-Mensaje.objects.filter(receptor=request.user).order_by('-fecha').values_list('fecha')[0]
+    #tiempoDesdeUltimoMensGuardado=datetime.datetime.now()-NuevoMens.objects.filter(user=request.user).values_list('ultimoMensFecha')[0]
+    #if tiempoDesdeUltimoMensActual<tiempoDesdeUltimoMensGuardado:
+
+        #tieneMensajeNuevo="Usted tiene un mensaje nuevo"
+    
+    
+        #return render(request, 'appMensajes/prueba.html', {'expresion':tieneMensajeNuevo})
+    
+    #else:
+        #noTieneMensajeNuevo="Ustes no tiene un mensaje nuevo"
+        #return render(request, 'appMensajes/prueba.html', {'expresion':noTieneMensajeNuevo})
+
+        a=datetime.datetime.now()
+        b=Mensaje.objects.filter(receptor=request.user).order_by('-fecha').values_list('fecha')[0]
+        return render(request, 'appMensajes/prueba.html', {'a':a, 'b':b})
