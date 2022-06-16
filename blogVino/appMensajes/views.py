@@ -12,7 +12,8 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-import datetime
+from datetime import datetime
+
 
 # Create your views here.
 
@@ -104,6 +105,10 @@ def nuevoMensRecib(request):
         #noTieneMensajeNuevo="Ustes no tiene un mensaje nuevo"
         #return render(request, 'appMensajes/prueba.html', {'expresion':noTieneMensajeNuevo})
 
-        a=datetime.datetime.now()
-        b=Mensaje.objects.filter(receptor=request.user).order_by('-fecha').values_list('fecha')[0]
-        return render(request, 'appMensajes/prueba.html', {'a':a, 'b':b})
+        a=datetime.now()
+        c=str(Mensaje.objects.filter(receptor=request.user).order_by('-fecha').values_list('fecha')[0])
+        d=c[19:48]
+        b=datetime.strptime(d, '%Y, %m, %d, %H, %M, %S, %f')
+
+        e=a-b
+        return render(request, 'appMensajes/prueba.html', {'a':a, 'b':b, 'e':e})
